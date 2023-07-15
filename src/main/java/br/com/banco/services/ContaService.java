@@ -21,6 +21,7 @@ public class ContaService  {
 	        return contaRepository.findAll();
 	    }
 	 
+
 	  /*Listar por Id*/
 	 public Optional<Conta> buscarContaPorId(Long id) {
 	        return contaRepository.findById(id);
@@ -40,5 +41,7 @@ public class ContaService  {
 	 public void deletarConta(Long id) {
 	        contaRepository.deleteById(id);
 	    }
+	 
+	
 	 
 }

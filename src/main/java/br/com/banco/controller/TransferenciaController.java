@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.com.banco.model.Conta;
@@ -28,13 +29,13 @@ public class TransferenciaController {
 	@Autowired
 	private TransferenciaService transferenciaService;
 		
-	 /*Listar todas as Contas*/
+	   /*Listar todas as Contas*/
 	  @GetMapping
 	    public ResponseEntity<List<Transferencia>> listarContas() {
 	        List<Transferencia> transferencias = transferenciaService.listarContas();
 	        return ResponseEntity.ok(transferencias);
 	    }
-	
+	  
 	  /*Listar por Id*/
 	  @GetMapping("/{id}")
 	    public ResponseEntity<Transferencia> buscarContaPorId(@PathVariable Long id) {
@@ -42,12 +43,14 @@ public class TransferenciaController {
 	        return transferencias.map(ResponseEntity::ok).orElse(ResponseEntity.notFound().build());
 	    }
 	  
+	  /*Cdastrar Transferencia*/
 	  @PostMapping
 	    public ResponseEntity<Transferencia> criarConta(@RequestBody Transferencia transferencia) {
 		  Transferencia novaConta = transferenciaService.criarConta(transferencia);
 	        return ResponseEntity.status(HttpStatus.CREATED).body(novaConta);
 	    }
 	  
+	  /*Atualizar transferencia*/
 	  @PutMapping("/{id}")
 	    public ResponseEntity<Transferencia> atualizarConta(@PathVariable Long id, @RequestBody Transferencia transferencia) {
 	        Optional<Transferencia> contaExistente = transferenciaService.buscarContaPorId(id);
@@ -61,6 +64,7 @@ public class TransferenciaController {
 	        return ResponseEntity.notFound().build();
 	    }
 	  
+	  /*Deletar Transferencia*/
 	  @DeleteMapping("/{id}")
 	    public ResponseEntity<Void> deletarConta(@PathVariable Long id) {
 	        Optional<Transferencia> transferencia = transferenciaService.buscarContaPorId(id);

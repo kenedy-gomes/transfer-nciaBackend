@@ -17,29 +17,29 @@ public class TransferenciaService {
 	@Autowired
 	private TransferenciaRepository transferenciaRepository;
 	
+	 /*Listar Todos*/
 	public List<Transferencia> listarContas() {
         return transferenciaRepository.findAll();
     }
- 
-  /*Listar por Id*/
- public Optional<Transferencia> buscarContaPorId(Long id) {
+
+    /*Listar por Id*/
+    public Optional<Transferencia> buscarContaPorId(Long id) {
         return transferenciaRepository.findById(id);
     }
  
-  /*Criar Conta*/
- public Transferencia criarConta(Transferencia transferencia) {
+    /*Criar Conta*/
+    public Transferencia criarConta(Transferencia transferencia) {
         return transferenciaRepository.save(transferencia);
     }
  
-  /*Atualizar Conta*/
- public Transferencia atualizarConta(Transferencia transferencia) {
+    /*Atualizar Conta*/
+    public Transferencia atualizarConta(Transferencia transferencia) {
         return transferenciaRepository.save(transferencia);
     }
  
-  /*Deletar Conta*/
- public void deletarConta(Long id) {
+    /*Deletar Conta*/
+    public void deletarConta(Long id) {
 	 transferenciaRepository.deleteById(id);
     }
  
-	
 }
